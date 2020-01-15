@@ -11,24 +11,24 @@
  */
 
 //  下面这个函数反应了闭包的缺点，只保存了变量的最后一个值；
- function createFunction() {
-     let result = [];
-     for (var i = 0; i< 10; i++) {
-         result[i] = function() {
-             return i;
-         }
-     }
-     return result;
- }
- let arr = createFunction();
- let log = console.log;
- log(arr[0]())
+function createFunction() {
+    let result = [];
+    for (var i = 0; i < 10; i++) {
+        result[i] = function () {
+            return i;
+        }
+    }
+    return result;
+}
+let arr = createFunction();
+let log = console.log;
+log(arr[0]())
 
 //  解决方案1 es6
 function createFunction() {
     let result = [];
-    for (let i = 0; i< 10; i++) {
-        result[i] = function() {
+    for (let i = 0; i < 10; i++) {
+        result[i] = function () {
             return i;
         }
     }
@@ -41,9 +41,9 @@ log(arr[0]())
 // 解决方案二 
 function createFunction() {
     let result = [];
-    for (var i = 0; i< 10; i++) {
-        result[i] = function(num) {
-            return function(){
+    for (var i = 0; i < 10; i++) {
+        result[i] = function (num) {
+            return function () {
                 return num;
             }
         }(i)

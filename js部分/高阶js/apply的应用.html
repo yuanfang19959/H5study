@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <button>121222</button>
+</body>
+<script>
+    var btn = document.querySelector('button');
+    btn.onclick = function () {
+        this.disabled = true;
+
+        // setTimeout默认this是window
+        // function dd() {
+        //     this.disabled = false;
+        //     console.log(this)
+        // }
+        // setTimeout(dd, 3000)
+
+        // 此方式可以改变setTimeout中函数的this
+        // function dd() {
+        //     this.disabled = false;
+        //     console.log(this)
+        // }
+        // setTimeout(dd.bind(this), 3000)
+
+        // 箭头函数根据上下文来判断this
+        setTimeout(() => {
+            this.disabled = false;
+            console.log(this)
+        }, 3000)
+    }
+</script>
+
+</html>
