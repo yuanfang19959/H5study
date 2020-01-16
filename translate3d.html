@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body{
+        }
+        .f{
+            transform-style: preserve-3d;
+            perspective: 300px;
+            position: relative;
+            width: 200px;
+            height: 200px;
+            margin: 100px auto;
+            background-color: blanchedalmond;
+        }
+        .f div{
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            text-align: center;
+        }
+
+        .er{
+            background-color: cadetblue;
+            transition: all 1s;
+        }
+        .er:hover{
+            transform: rotate3d(0, 1, 0, 180deg);
+        }
+
+        .fu{
+            background-color: chocolate;
+            transition: all 1s;
+            transform: rotate3d(0, 1, 0, -180deg);
+        }
+    </style>
+</head>
+<body>
+    <div class="f">
+        <div class="er">哈麻皮</div>
+        <div class="fu">臭屁个</div>
+    </div>
+</body>
+</html>
