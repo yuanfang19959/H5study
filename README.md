@@ -1,5 +1,5 @@
 ## JS部分
-### call和apply有什么区别？哪个性能更好一些？
+### call和apply和bind有什么区别？哪个性能更好一些？
 `
 
     let tmp = [10, 20, 30, 40];
@@ -81,3 +81,87 @@
 #### 函数
 + 函数不允许有重复的参数
 + 不允许在非函数代码块定义函数
+
+
+### 事件流
++ 事件捕获 -> 处于目标 -> 事件冒泡
+1. HTML事件处理程序
+
+`
+
+        <input type="text" onclick="handler()">
+        // 缺点不易维护，可能存在页面已经渲染好js代码还没加载完成用户点击按钮造成无法响应；
+
+`
+
+2. DOM0级
+
+`
+  
+        1. 默认在冒泡阶段触发
+        2. 其中的this为元素所在的作用域
+        btn.onclick = function() {}
+        
+        // 移除事件
+        btn.onclick = null;
+
+
+`
+
+3. DOM2级
+
+`       
+
+        特点：可以添加多个相同事件
+        // 参数为true的情况下 点击btn 会触发事件捕获
+        // body -> div -> btn
+        document.body.addEventListener('click', function () {
+            alert('body')
+        }, true)
+        div.addEventListener('click', function () {
+            alert('div')
+        }, true)
+        btn.addEventListener('click', function () {
+            alert('btn')
+        }, true)
+        
+
+        // 参数为false的情况下 点击btn 会触发事件捕获. 默认不传false的话 会执行冒泡
+        // btn -> div -> body
+        document.body.addEventListener('click', function () {
+            alert('body')
+        })
+        div.addEventListener('click', function () {
+            alert('div')
+        })
+        btn.addEventListener('click', function () {
+            alert('btn')
+        })
+
+        // 移除事件 需要传入相同的参数；但是如果里面是匿名函数的话 则无法移除
+        btn.removeEventListener('click', function(){}, false)
+
+
+`
+
+4. IE事件处理程序
+
+`
+
+        // 这里面的this === window 仅支持ie11以下
+        // ie8以下会以相反的顺序执行 
+        var btn = document.getElementById("btn");
+        btn.attachEvent('onclick', function(){
+            alert(this === window)
+        })
+        btn.attachEvent('onclick', function(){
+            alert(11111111111111)
+        })
+        
+        // 移除事件 但是匿名函数的事件无法移除
+        btn.detachEvent('onclick', function(){
+            alert(11111111111111)
+        })
+
+
+`
