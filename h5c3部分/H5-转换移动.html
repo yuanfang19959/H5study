@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div:nth-child(1) {
+            width: 200px;
+            height: 200px;
+            /* transform: translate(x,y); */
+            /* transform: translate(100px, 200px); */
+            background-color: blueviolet;
+        }
+
+        div:nth-child(2) {
+            width: 200px;
+            height: 200px;
+            background-color: brown;
+        }
+
+        div:hover {
+            transform: translateY(-5px);
+        }
+        ul li{
+            list-style: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div></div>
+    <div></div>
+    <ul>
+        <li>tranlate（x，y）改变位置并不会对相邻位置产生影响</li>
+        <li>tranlate（50%，50%）百分比是当对于自身长宽移动的</li>
+        <li>对于行内元素是不起作用的</li>
+    </ul>
+</body>
+
+</html>

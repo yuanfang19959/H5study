@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div {
+            width: 200px;
+            height: 200px;
+            background-color: blueviolet;
+            transition: all .9s;
+        }
+
+        /* 如果有位移的话 需要将位移放在最前面 */
+        div:hover {
+            transform: translate(600px, 800px) rotate(720deg) scale(2, 5);
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+</body>
+</html>

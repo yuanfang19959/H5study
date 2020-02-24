@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>test</title>
+    <style>
+        #A {
+            width: 200px;
+            height: 200px;
+            background-color: blueviolet;
+        }
+        #B {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="A">我是A
+        <div id="B">我是B</div>
+    </div>
+    <h1>
+        currentTarget始终为添加事件的那个元素
+    </h1>
+    <h1>
+        this === e.currentTarget始终成立
+    </h1>
+    <h1>
+        target为当前点击的元素
+    </h1>
+</body>
+
+</html>
+
+<script>
+    const log = console.log;
+    let a = document.querySelector('#A'),
+        b = document.querySelector('#B');
+    const handler = function(e) {
+        log('target')
+        log(e.target)
+        log(this === e.target)
+        log('-----------------------')
+
+        log('currentTarget');
+        log(e.currentTarget)
+        log(this === e.currentTarget)
+        log('-----------------------')
+
+        log(this)
+    }
+    a.addEventListener('click', handler); 
+    // b.addEventListener('click', handler); 
+      
+</script>
+
+</html>

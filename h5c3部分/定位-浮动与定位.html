@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>定位-浮动与定位</title>
+    <style>
+        .box {
+            width: 500px;
+            height: 400px;
+            background-color: darksalmon;
+        }
+        .box:nth-child(2) {
+            background-color: deepskyblue;
+        }
+        .dd {
+            width: 200px;
+            height: 200px;
+            background-color: gold;
+        }
+        .d2 {
+            position: absolute;
+        }
+        .fl {
+            float: left;
+        }
+        .fr {
+            float: right;
+        }
+    </style>
+</head>
+<body>
+    <div class="box fr">
+        <div class="dd fl">我是浮动</div>
+        浮动不会遮住文字
+    </div>
+    <div class="box fl">
+        <div class="dd d2">我是定位</div>
+        定位会遮住元素
+    </div>
+</body>
+</html>

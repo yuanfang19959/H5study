@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0 auto;
+        }
+        .f {
+            width: 100%;
+            border: 1px solid red;
+        }
+
+        .f div {
+            display: inline-block;
+            width: 200px;
+            height: 300px;
+            background-color: rgb(78, 173, 228);
+        }
+
+        .a, .b {
+            display: inline-block;
+            background-color: cadetblue;
+            width: 50%;
+            height: 200px;
+            /* border: 1px solid red; */
+            /* margin-left: -3px; */
+        }
+    </style>
+</head>
+
+<body>
+    <h1>移除之间的空格</h1>
+    <div class="f">
+        <div></div><div></div>
+    </div>
+
+    <h1>消除水平间隙</h1>
+    <div class="f" >
+        <div style="vertical-align: bottom;"></div>
+        <div style="vertical-align: bottom;"></div>
+    </div>
+
+    <h1>消除垂直间隙</h1>
+    <div class="f" style="font-size: 0;">
+        <div></div>
+        <div></div>
+    </div>
+
+    <div class="a"></div><div class="b"></div>
+</body>
+
+</html>

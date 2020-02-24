@@ -4,7 +4,7 @@
  */
 const deepClone = obj => {
     if (!obj instanceof Object) return;
-    
+
     let newObj = obj instanceof Array ? [] : {}; //第二次调用区分数组和obj
     for (let name in obj) {
         let tmp = obj[name];
@@ -30,3 +30,12 @@ let d = {
 let newObj = deepClone(d);
 d.b.age = 64;
 console.log(newObj);
+
+const deepClone = obj => {
+    if (!obj instanceof Object) return;
+    let newObj = Array.isArray(obj) ? [] : {};
+    for (name in obj) {
+        newObj[name] = Array.isArray(obj[name]) ? deepClone(obj[name]) : obj[name];
+    }
+    return newObj;
+}

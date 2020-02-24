@@ -10,8 +10,9 @@ function curry(fn) {
     }
 }
 
-function hu() {
-    console.log(11111111)
+function hu(words) {
+    console.log(words)
 }
 
-curry(hu)()
+curry(hu)(1234)
+
