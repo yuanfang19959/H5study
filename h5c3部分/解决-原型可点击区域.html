@@ -1,0 +1,46 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            background-color: burlywood;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+    </style>
+    <script>
+        document.onclick = function (e) {
+            var r = 50;
+            var x1 = 100;
+            var y1 = 100;
+            var x2 = e.clientX;
+            var y2 = e.clientY;
+            var distance = Math.abs(Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2)));
+            if (distance <= r)
+                alert("Yes!");
+        }
+    </script>
+</head>
+
+<body>
+    <!-- 使用border-radius -->
+    <div></div>
+
+    <!-- 使用map-area -->
+    <img src="https://dss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=402743722,1190487433&fm=26&gp=0.jpg"
+        width="200" height="200" alt="" usemap="#planetmap">
+    <map name="planetmap" id="planetmap">
+        <area shape="circle" coords="100,100,50" href="http://www.baidu.com" rel="external nofollow" alt=""
+            target="_blank">
+    </map>
+
+    <!-- 使用js -->
+</body>
+
+</html>

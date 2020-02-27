@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .father {
+            width: 300px;
+            height: 300px;
+            margin-top: 30px;
+            background-color: seagreen;
+        }
+
+        .son {
+            width: 100%;
+            height: 50px;
+            margin-top: 20px;
+            background-color: slateblue;
+        }
+        ul li {
+            list-style: none;
+        }
+
+        .b1, .b2 {
+            /* display: inline-block; */
+            width: 200px;
+            height: 200px;
+            margin-bottom: 100px;
+            background-color: thistle;
+            /* vertical-align:bottom;  */
+            /* 消除水平间隙 */
+
+        }
+
+        .b2 {
+            border: 1px solid blue;
+            margin-top: 20px;
+            background-color: violet;
+        }
+
+        .bf {
+            border: 1px solid red;
+            font-size: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>父子盒子外边距重叠</h1>
+    <ul>
+        <li>1. 父级定义border</li>
+        <li>2. 用padding代替</li>
+        <li>3. overflow:hidden</li>
+    </ul>
+    <div class="father">
+        <div class="son"></div>
+    </div>
+
+    <h1>兄弟外边距重叠</h1>
+    <ul>
+        <li>1. 相邻中间加字符</li>
+        <li>2. 取一个margin就可以了</li>
+    </ul>
+    <div class="bf">
+        <div class="b1"></div>
+        <div class="b2"></div>
+    </div>
+</body>
+
+</html>

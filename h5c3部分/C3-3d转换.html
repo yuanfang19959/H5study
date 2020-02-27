@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div {
+            width: 200px;
+            height: 200px;
+            margin: 0 auto;
+            background-color: darksalmon;
+            /* translate3d一般使用px为单位，z轴正值方向为靠近你的方向 */
+            /* 当z为0时也是必填的 */
+            transform: translate3d(0px, 200px, 110px);
+        }
+
+        body{
+            /* 透视写到被观察元素的父盒子上 */
+            /* 透视越小 元素越大 */
+            perspective: 500px;
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+</body>
+</html>

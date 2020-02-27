@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>position:sticky 粘性定位</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .dd {
+            position: sticky;
+            top: 20px;
+            width: 400px;
+            height: 200px;
+            padding: 10px;
+            margin: 0 auto;
+            background-color: #a9de8d;
+        }
+        .cl {
+            width: 100%;
+            height: 1000px;
+            background-color: cadetblue;
+        }
+    </style>
+</head>
+<body>
+    <div class="dd">
+        1. position:sticky 粘性定位
+        <br>
+        2. 相对于可是区域必须有top
+        <br>
+        缺点： 不兼容ie
+    </div>
+    <div class="cl"></div>
+</body>
+</html>

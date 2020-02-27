@@ -1,0 +1,84 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>产生浮动的原因</title>
+    <style>
+        .one {
+            width: 1200px;
+            margin: 0 auto;
+            border: 1px solid #000;
+        }
+
+        .dd {
+            float: left;
+            width: 200px;
+            height: 150px;
+            background-color: brown;
+        }
+
+        .mm {
+            float: left;
+            width: 300px;
+            height: 300px;
+            background-color: cadetblue;
+        }
+
+        .clearfix:after {
+            content: "";
+            display: block;
+            clear: both;
+        }
+
+        .clearfix {
+            *zoom: 1;
+        }
+    </style>
+</head>
+
+<body>
+    <p>
+        1. 父元素没有设置高度的情况下，子元素浮动就脱离了文档流；造成高度塌陷，父元素相邻的元素就上来了；
+    </p>
+    <dl>
+        <dt><b>浮动的特点</b></dt>
+        <dd>1.脱离标准流移动到指定位置</dd>
+        <dd>2.原有的位置不被保留</dd>
+        <dd>3.浮动后都具有行内块级元素的特点</dd>
+    </dl>
+    <dl>
+        <dt><strong>注意点</strong></dt>
+        <dd>浮动的盒子回影响后面的标准流</dd>
+    </dl>
+
+    <!-- 浮动盒一 -->
+    1. 父盒子里面最后添加一个块级元素，并且clear：both
+    <div class="one">
+        <div class="dd">大猫</div>
+        <div class="mm">小狗</div>
+        <div class="dd">大猫</div>
+        <div class="mm">小狗</div>
+        <div class="dd">大猫</div>
+        <div class="mm">小狗</div>
+        <div class="dd">大猫</div>
+        <div class="mm">小狗</div>
+        <div style="clear: both;"></div>
+    </div>
+    <br>
+
+    2. 父盒子使用overflow：hidden；
+    <div class="one" style="overflow: hidden;">
+        <div class="dd">大猫</div>
+        <div class="mm">小狗</div>
+    </div>
+
+    3. 使用伪元素
+    <div class="one clearfix">
+        <div class="dd">大猫</div>
+        <div class="mm">小狗</div>
+    </div>
+</body>
+
+</html>

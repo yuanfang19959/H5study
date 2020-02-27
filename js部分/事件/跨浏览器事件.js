@@ -25,7 +25,7 @@ var EventUtil = {
     },
     //获取事件对象
     getEvent(event) {
-        return event?event :window.event;
+        return event ? event : window.event;
     },
     // 获取目标元素
     getTarget(event) {
@@ -35,7 +35,7 @@ var EventUtil = {
     preventDefault(event) {
         if (event.preventDefault) {
             event.preventDefault()
-        }else{
+        } else {
             event.returnValue = false;
         }
     },
@@ -43,7 +43,7 @@ var EventUtil = {
     stopPropagation(event) {
         if (event.stopPropagation) {
             event.stopPropagation()
-        }else {
+        } else {
             event.cancelBubble = true;
         }
     }
