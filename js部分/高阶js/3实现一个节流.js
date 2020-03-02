@@ -37,4 +37,29 @@ const throttle = (fn, delay) => {
 let oThrottle = throttle(trottleDD, 2000)
 
 let el = document.querySelector("#el");
-el.addEventListener("click", oThrottle.bind(null, 123, 678))
+el.addEventListener("click", oThrottle)
+
+
+// 多少间隔执行一次
+const throttle = (fn, delay) => {
+    let flag = true;
+    return (...args) => {
+        if (!flag) reuturn;
+        flag = false;
+        setTimeout(() => {
+            fn.call(this, ...args);
+            flag = true;
+        }, delay)
+    }
+}
+
+
+const debouce = (fn, delay) => {
+    let timer = "";
+    return (...args) => {
+        clearTimeout(timer);
+        timer = setTimeout(() => {
+            fn.call(this, ...args)
+        }, delay)
+    }
+}

@@ -27,12 +27,17 @@
         ul li{
             list-style: none;
         }
+        span {
+            display: inline-block;
+            transform: translateY(-50px);
+        }
     </style>
 </head>
 
 <body>
     <div></div>
     <div></div>
+    <span>行内元素使用translate需要转换为行内块或者块级元素</span>
     <ul>
         <li>tranlate（x，y）改变位置并不会对相邻位置产生影响</li>
         <li>tranlate（50%，50%）百分比是当对于自身长宽移动的</li>

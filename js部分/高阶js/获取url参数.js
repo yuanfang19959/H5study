@@ -13,3 +13,18 @@ const getQueryString = () => {
     })
     return queryOBJ;
 }
+
+
+const getSearchParam = () => {
+    let searchStr = location.search ? location.search.substring(1) : '';
+    if (!searchStr) return;
+    let searchObj = {};
+    let tmpArr = searchStr.split('&');
+    tmpArr.map( its => {
+        let [name, val] = its.split('=');
+        name = decodeURIComponent(name);
+        val = decodeURIComponent(val);
+        searchObj[name] = val;
+    })
+    return searchObj;
+}
