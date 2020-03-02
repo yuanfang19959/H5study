@@ -65,7 +65,7 @@
             })
         }
 `
-+ actions: 异步处理state
++ actions: 用于提交 mutation，异步处理state
 `
 
         const store = new Vuex.Store({

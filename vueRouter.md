@@ -107,3 +107,43 @@
     consot uper = () => import('./aaa)
 
 `
+#### vue-router 路由模式有几种？
++ hash: 使url hash作为值来做路由。支持所有浏览器
++ history: 依赖h5 history Api和服务器配置
++ abstract：支持所有js运行环境，包括node服务端。如果发现没有浏览器的api 会自动进入这个模式。
+
+`
+
+        switch (mode) {
+        case 'history':
+            this.history = new HTML5History(this, options.base)
+            break
+        case 'hash':
+            this.history = new HashHistory(this, options.base, this.fallback)
+            break
+        case 'abstract':
+            this.history = new AbstractHistory(this, options.base)
+            break
+        default:
+            if (process.env.NODE_ENV !== 'production') {
+            assert(false, `invalid mode: ${mode}`)
+            }
+        }
+
+`
+
+#### 能说下 vue-router 中常用的 hash 和 history 路由模式实现原理吗？
++ hash 早期前端路由基于location.hash来实现的，location.hash就是url#后面的内容
+  1. url中hash值时客户端的一种状态，向服务器发生请求时，hash部分不会被发送。
+  2. hash的改变，都会在浏览器的历史记录中增加一条记录。因此可以通过前进后退按钮来控制hash的改变。
+  3. 可以使用js来对location.hash进行赋值，改变url的hash值。
+  4. 可以使用hashchange事件来监听hash值得变化，从而进行页面的跳转。
+
++ history h5提供了api来实现url的变化
+  1. history.pushState(); 新增一个历史记录
+  2. histort.replaceState(); 直接替换当前的历史记录
+
+  + 原理：
+    + pushState和replaceState来实现url的变化
+    + 可以通过popstate来监听url的变化，从而实现页面的跳转
+    + pushState和replaceState不会触发popstate事件，这时我们需要手动触发页面跳转
