@@ -126,7 +126,7 @@
         }, true)
         
 
-        // 参数为false的情况下 点击btn 会触发事件捕获. 默认不传false的话 会执行冒泡
+        // 参数为false的情况下 点击btn 会触发冒泡. 默认不传false的话 会执行冒泡
         // btn -> div -> body
         document.body.addEventListener('click', function () {
             alert('body')

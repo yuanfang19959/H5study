@@ -8,3 +8,9 @@ Object.defineProperty(target, key, {
     },
     set: function() {}
 })
+
+// Object.keys()
+// Object.create()
+// for in
+// in
+// hasOwnProperty()
