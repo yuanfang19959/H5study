@@ -26,7 +26,7 @@
 ### 箭头函数和普通函数有什么区别？
 + 箭头函数比普通函数更加简洁
 + 箭头函数没有自己的this，需要根据上下文来判断（call， apply无法改变指向）
-+ 箭头函数没有argument，但是可以通过...arg来获取；
++ 箭头函数没有arguments，但是可以通过...arg来获取；
 + 箭头函数不能使用new来创建对象，因为它没有prototype；
 
 ---
@@ -126,7 +126,7 @@
         }, true)
         
 
-        // 参数为false的情况下 点击btn 会触发事件捕获. 默认不传false的话 会执行冒泡
+        // 参数为false的情况下 点击btn 会触发冒泡. 默认不传false的话 会执行冒泡
         // btn -> div -> body
         document.body.addEventListener('click', function () {
             alert('body')
