@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            height: 1200px;
+            background-color: blueviolet;
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+    <ul>
+    </ul>
+    <script>
+        let ul = document.querySelector('ul')
+        let i = 0;
+        window.addEventListener('scroll', () => {
+            let scrollTop = document.documentElement.scrollTop; //被卷曲的距离
+            let scrollHeight = document.documentElement.scrollHeight; //整个网页的高度
+            let clientHeight = document.documentElement.clientHeight; //可是区域
+            if (scrollTop + clientHeight >= scrollHeight) {
+                i++;
+                let li = document.createElement('li');
+                li.innerHTML = i;
+                ul.append(li);
+            }
+        })
+    </script>
+</body>
+</html>

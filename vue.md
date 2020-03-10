@@ -1,26 +1,31 @@
 <!-- https://juejin.im/post/5d59f2a451882549be53b170 -->
 #### keep-alive
-+ vue的内部组件，可以缓存组件的状态，不被重新渲染。需要配合路由一起使用
++ vue的内部组件，可以缓存组件的状态，不被重新渲染。
 + 有两个方法actived和deactived，当进入keep-alive会触发actived方法，组件被激活。离开时触发deactived
-+ 有两个属性include和exclude, include标记的路由可以被保存状态，exclude除了这些不保存状态
++ 有两个属性include和exclude, include标记的组件名称可以被保存状态，exclude除了这些不保存状态
 
 #### 组件通信方式
-+ 父 > 子 props
-+ 子 > 父 $emit
++ 父 > 子 props ----- 子 > 父 $emit
 + ref 与 $parent / $children 适用 父子组件通信
   1. ref：如果在普通的 DOM 元素上使用，引用指向的就是 DOM 元素；如果用在子组件上，引用就指向组件实例
   2. $parent / $children：访问父 / 子实例
 + 组件之间vuex
 + EventBus （$emit / $on） 适用于 父子、隔代、兄弟组件通信
-
++ attrs/ listeners
++ provide/inject
 #### vue生命周期
-+ beforeCreate 组件实例还没有创建，此时data和method还未初始化
-+ created 组件实例完全创建，可以调用data和method，但是dom还没有生成，$el此时不可用
+##### 创建期间
++ beforeCreate 实例在内存中刚被创建，此时data和method还未初始化
++ created 实例在内存中创建好，可以调用data和method，但是dom还没有生成，但是还没有模板编译，$el此时不可用
 + beforeMount 再挂载前调用，此时可以获取dom,但是页面上的mustache表达式没有被替换。 
 + mounted  页面渲染完毕
+
+#### 运行期间
 + beforeUpdate 数据改变之前调用的回调函数，此时data是最新的但是dom不是最新的
 + updated 组件更新之后
-+ beforeDestory 组件销毁前调用
+
+#### 销毁期间
++ beforeDestory 组件销毁前调用，实例还是完全可用
 + destoryed 组件销毁后调用
 
 #### Vue 的父组件和子组件生命周期钩子函数执行顺序？
@@ -87,7 +92,8 @@
 + v-show
 + v-text
 + v-html
-+ v-once
++ v-once 只渲染组件或者元素一次，后面就不会渲染了
++ v-cloak
 
 #### vue为何不能监听数组的改变
 this.$set(obj, attr, value);
@@ -118,7 +124,7 @@ this.splice(index, 1, newValue)
 + viewmodel层
   vm是v和m的调度者。view和vm之间双向数据绑定，vm的内容变化会实时展现在view
 
-#### 为什么key最好不要是index
+#### key为什么不能用index？                              
 + 比如说一个数组渲染至页面上，通过index绑定key。此时我要在其中插入一个元素。那么处于这个未知的元素的index 就给了新插入的这个元素，然后处于这个新增元素后面的index就会更新。对性能造成了影响。
 
 #### Vue 中的 key 有什么作用？
@@ -138,10 +144,17 @@ this.splice(index, 1, newValue)
 + 监听器Observe：主要是对数据对象进行遍历，包括子属性对象的属性。主要通过Object.defineProperty() 对属性加上setter，和getters。
 + 编译器Compile：解析差值表达式，将差值表达式的变量都替换成数据，然后初始化渲染页面，并对差值表达式对应的节点绑定更新函数。添加监听数据的订阅者，一旦数据发生改变，收到通知，立即调用更新函数进行数据渲染。
 + 订阅者watcher：为Observer和compile之间通信的桥梁，主要是订阅Observer中的属性变化的消息。当属性变化时会触发Dep的notify方法。然后Wacter的update方法会触发compile对应的更新函数。
-+ 订阅者Dep：采用发布订阅模式，用来收集watcher。对象的每个属性对应一个dep的实例
++ 订阅器Dep：采用发布订阅模式，用来收集watcher。对象的每个属性对应一个dep的实例
+
+#### 发布订阅？
 
 #### slot
+1. 在组件内插入一个slot标签，当调用组件时在可以在组件标签中插入内容。
+2. 如果默认slot中存在内容，组件标签中插入的内容会替换默认的内容。否在显示默认的内容
+3. 具名插槽，调用的时候可以在html标签 上增加 slot=“a”， slot name = “a”
+
 #### $nextTick
++ 在下一次dom更新后调用的函数，在修改数据后立即调用这个回调函数，获取更新后的dom
 
 #### 你有对 Vue 项目进行哪些优化？
 + 代码层面的优化
@@ -151,3 +164,22 @@ this.splice(index, 1, newValue)
   + 路由懒加载
   + 第三方插件按需引入
   + 图片资源懒加载
+
+### vue 首屏加载优化
+  1. 把不常用的库放到index.html里，采用cdn方式引入
+  2. 路由懒加载
+  3. 不生成map文件
+  4. 组件尽量不要全局引入
+  5. 服务端渲染
+
+### 单向数据流
+  + 父组件是通过prop把数据传给子组件的，但是子组件不能修改这个值，不然的话会报错。子组件想要修改时，只能通过$emit派发一个事件来修改。
+ 
+
+### v-model
+`
+
+        <input v-model="number">
+        // 相当于
+        <input :value="number" @input="$event.target.value">
+`

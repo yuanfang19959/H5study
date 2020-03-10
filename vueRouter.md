@@ -93,7 +93,7 @@
 4. 再重复的组件里调用beforeRouteUpdate
 5. 在路由配置里调用beforeEnter
 6. 解析异步路由组件
-7. 再被激活的组件里调用beforRonteEnter
+7. 再被激活的组件里调用beforRouteEnter
 8. 调用全局的beforeResolve
 9. 导航被确认
 10. 调用全局的afterEach钩子
@@ -147,3 +147,7 @@
     + pushState和replaceState来实现url的变化
     + 可以通过popstate来监听url的变化，从而实现页面的跳转
     + pushState和replaceState不会触发popstate事件，这时我们需要手动触发页面跳转
+
+### Vue 路由中 route 和router 的区别
++ route是路由信息对象，有query，params，hash，name等属性
++ router是路由实例对象，有跳转方法，还有钩子函数
