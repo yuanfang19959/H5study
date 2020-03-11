@@ -41,3 +41,12 @@ const deepClone = obj => {
     }
     return newObj;
 }
+
+const deepClone = obj => {
+    if (!obj instanceof Object) return;
+    let newObj = Array.isArray(obj)? []: {};
+    for (let name in obj ) {
+        newObj[name] = Array.isArray(obj[name])? deepClone(obj[name]) : (obj[name] instanceof Object? deepClone(obj[name]):obj[name])
+    }
+    return newObj;
+}
